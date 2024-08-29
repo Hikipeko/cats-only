@@ -1,18 +1,43 @@
 {% extends "base.html" %}
 {% block account %}
-<b><a href="/accounts/login/">login</a></b>
 {% endblock account %}
 
 {% block content %}
-<form action="/accounts/?target=/" method="post" enctype="multipart/form-data">
-  username <input type="text" name="username" required />
-  password <input type="password" name="password" required />
-  <input type="submit" value="login" />
-  <input type="hidden" name="operation" value="login" />
-</form>
+<div class="row">
+  <h2 class="slogan mb-4">Share your cute cats with the rest of the world!</h2>
+  <div class="col-md-6 d-flex align-items-center justify-content-center login-container">
+      <form action="/accounts/?target=/" method="post" enctype="multipart/form-data" class="login-form">
+        <div class="form-group">
+          <input type="text" name="username" placeholder="Username" class="form-control w-100 mb-3" required />
+        </div>
+        <div class="form-group">
+          <input type="password" name="password" placeholder="Password" class="form-control w-100 mb-3" required />
+        </div>
+        <div class="form-group">
+          <input type="submit" value="Log in" class="btn btn-primary w-100" />
+        </div>
+        <input type="hidden" name="operation" value="login" />
+        <p class="signup-link">
+          Don't have an account? <a href="/accounts/create/">Sign up</a>
+        </p>
+      </form>
 
-<p>
-  Don't have an account?
-  <a href="/accounts/create/">Sign up</a>
-</p>
+  </div>
+
+  <div class="col-md-6 d-none d-md-block">
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="/images/cat1.jpg" class="d-block w-100" alt="Cat 1">
+        </div>
+        <div class="carousel-item">
+          <img src="/images/cat2.jpg" class="d-block w-100" alt="Cat 2">
+        </div>
+        <div class="carousel-item">
+          <img src="/images/cat3.jpg" class="d-block w-100" alt="Cat 3">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock content %}
