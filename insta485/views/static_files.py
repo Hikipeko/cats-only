@@ -38,4 +38,4 @@ def send_static_css(filename):
 def send_favicon():
     """Send image from filesystem."""
     return flask.send_from_directory(
-        insta485.app.config["STATIC_FOLDER"], "favicon.ico")
+        insta485.app.config["STATIC_FOLDER"], "favicon.png")
