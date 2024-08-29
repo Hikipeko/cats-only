@@ -211,7 +211,7 @@ class Post extends React.Component {
 
     // Render post image and post owner
     return (
-      <div className="post my-5">
+      <div className="post my-2">
         <div className="card">
           <UserInfo
             ownerImgUrl={ownerImgUrl}

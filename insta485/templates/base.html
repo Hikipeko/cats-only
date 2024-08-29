@@ -18,7 +18,7 @@
 </head>
 
 <body style="background-color: #fff7e6;">
-  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffc876;">
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffc876; position: relative;">
     <div class="container-fluid">
       <div class="collapse navbar-collapse justify-content-center" id="navbarCenteredExample">
         <div class="container">
@@ -26,25 +26,22 @@
             <div class="col-md-2 text-center">
               <a class="navbar-brand" href="/">
                 Cats Only
-            </a>
-            </div>
-            <!-- <div class="col-md-2 text-center">
-              <a class="nav-link" href="/">
-                <i class="fas fa-home fa-lg text-dark" style="color: #e65100;"></i>
               </a>
-            </div> -->
-            <div class="col-md-6 text-center">
-              {% block account %}
-              <b>
-                <a href="/explore/" style="color: #e65100;">Explore</a> |
-                <a href="/users/{{ logname }}/" style="color: #e65100;">{{ logname }}</a>
-              </b>
-              {% endblock account %}
             </div>
-            <div class="col-md-2 text-center">
-              <!-- Placeholder for future elements if needed -->
-            </div>
+            <!-- Placeholder for future elements if needed -->
+            <div class="col-md-6 text-center"></div>
+            <div class="col-md-4"></div>
           </div>
+        </div>
+        <!-- Positioned the account links at the bottom right -->
+        <div class="account-links" style="position: absolute; bottom: 0; right: 0; padding-right: 15px; padding-bottom: 10px;">
+          {% block account %}
+          <b>
+            <a href="/explore/" style="color: #e65100;">Explore</a> |
+            <a href="/users/{{ logname }}/" style="color: #e65100;">{{ logname }}</a> |
+            <a href="/accounts/logout/" style="color: #e65100;">Log out</a>
+          </b>
+          {% endblock account %}
         </div>
       </div>
     </div>

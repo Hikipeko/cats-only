@@ -29,21 +29,19 @@ PostImage.propTypes = {
 export function Avatar(props) {
   const { ownerShowUrl, ownerImgUrl, owner } = props;
   return (
-    <div className="col-md-8">
-      <div className="d-flex">
-        <a href={ownerShowUrl}>
-          <img
-            src={ownerImgUrl}
-            className="border rounded-circle mr-2"
-            alt="img"
-            style={{ height: "40px" }}
-          />
+    <div className="d-flex align-items-center">
+      <a href={ownerShowUrl}>
+        <img
+          src={ownerImgUrl}
+          className="border rounded-circle mr-3"
+          alt={owner}
+          style={{ height: "40px", width: "40px", objectFit: "cover" }}
+        />
+      </a>
+      <div>
+        <a href={ownerShowUrl} className="text-dark font-weight-bold">
+          {owner}
         </a>
-        <div className="mt-2">
-          <a href={ownerShowUrl} className="text-dark">
-            <strong className="mt-5">{owner}</strong>
-          </a>
-        </div>
       </div>
     </div>
   );
@@ -57,21 +55,21 @@ Avatar.propTypes = {
 export function UserInfo(props) {
   const { ownerShowUrl, ownerImgUrl, owner, postShowUrl, created } = props;
   return (
-    <div className="card-body">
-      <div className="container">
-        <div className="row">
-          <Avatar
-            ownerShowUrl={ownerShowUrl}
-            ownerImgUrl={ownerImgUrl}
-            owner={owner}
+    <div className="card-body py-2">
+      <div className="d-flex align-items-center">
+        <a href={ownerShowUrl} className="d-flex align-items-center">
+          <img
+            src={ownerImgUrl}
+            className="rounded-circle"
+            alt={owner}
+            style={{ height: "32px", width: "32px", objectFit: "cover", marginRight: "10px" }}
           />
-          <div className="col-md-4">
-            <a href={postShowUrl}>
-              <p className="mt-2 float-right" style={{ color: "grey" }}>
-                {created}
-              </p>
-            </a>
-          </div>
+        </a>
+        <div>
+          <a href={ownerShowUrl} className="text-dark font-weight-bold mr-2">
+            {owner}
+          </a>
+          <span className="text-muted">• {created}</span>
         </div>
       </div>
     </div>

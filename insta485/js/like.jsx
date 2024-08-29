@@ -1,5 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
+
 
 class Like extends React.Component {
   constructor(props) {
@@ -26,20 +30,17 @@ class Like extends React.Component {
     console.log(postid, lognameLikesThis, numLikes);
     return (
       <div>
-        <div className="row">
-          <div className="col-md-8 mt-1">
-            <p>
-              {numLikes}
-              {numLikes === 1 ? " like" : " likes"}
-            </p>
-          </div>
-        </div>
-        <div>
+        <div className="d-flex align-items-center">
           {lognameLikesThis ? (
             <UnlikeButton onClick={this.unlikeClick} />
           ) : (
             <LikeButton onClick={this.likeClick} />
           )}
+        </div>
+        <div className="mt-2">
+          <p className="text-dark font-weight-bold" style={{ margin: '0 0 0 8px', fontSize: '12px' }}>
+            {numLikes.toLocaleString()} {numLikes === 1 ? 'like' : 'likes'}
+          </p>
         </div>
       </div>
     );
@@ -56,11 +57,10 @@ Like.propTypes = {
 
 export default Like;
 
-function LikeButton(props) {
-  const { onClick } = props;
+function LikeButton({ onClick }) {
   return (
-    <button type="button" className="like-unlike-button" onClick={onClick}>
-      Like
+    <button type="button" className="like-unlike-button" onClick={onClick} style={{ background: 'none', border: 'none', padding: '0' }}>
+      <FontAwesomeIcon icon={regularHeart} style={{ color: '#262626', fontSize: '24px' }} />
     </button>
   );
 }
@@ -69,11 +69,10 @@ LikeButton.propTypes = {
   onClick: PropTypes.func.isRequired,
 };
 
-function UnlikeButton(props) {
-  const { onClick } = props;
+function UnlikeButton({ onClick }) {
   return (
-    <button type="button" className="like-unlike-button" onClick={onClick}>
-      Unlike
+    <button type="button" className="like-unlike-button" onClick={onClick} style={{ background: 'none', border: 'none', padding: '0' }}>
+      <FontAwesomeIcon icon={solidHeart} style={{ color: '#ed4956', fontSize: '24px' }} />
     </button>
   );
 }
