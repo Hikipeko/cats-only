@@ -26,16 +26,11 @@ h1 {
     font-size: 3rem;
 }
 
-.navbar {
-    background-color: #ffa726;
-    border-bottom: 2px solid #e65100;
-}
-
-.nav-link, .navbar-brand {
+.nav-link {
     color: #e65100 !important;
 }
 
-.nav-link:hover, .navbar-brand:hover {
+.nav-link:hover {
     color: #fb8c00 !important;
 }
 
@@ -92,21 +87,40 @@ input[type="submit"]:hover {
     text-shadow: 2px 2px 4px rgba(255, 182, 193, 0.5);
     letter-spacing: 1px;
   } */
-  
 
-  @font-face {
+
+@font-face {
     font-family: 'Meows';
     src: url('/static/css/Meows-VGWjy.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
-  }
-  
-  .slogan {
+}
+
+@font-face {
+    font-family: 'HelloCatto';
+    src: url('/static/css/HelloCatto-OVXe8.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.slogan {
     font-family: 'Meows', cursive;
     font-size: 58px;
     font-weight: normal;
-    color: #e65100; /* Adjust the color if needed */
+    color: #e65100;
+    /* Adjust the color if needed */
     margin-bottom: 20px;
     text-shadow: 2px 2px 4px rgba(255, 182, 193, 0.5);
     letter-spacing: 1px;
-  }
+}
+
+.navbar .navbar-brand {
+    font-family: 'HelloCatto', cursive;
+    font-size: 2.5rem;
+    color: #e65100;
+}
+
+.navbar {
+    background-color: #ffa726;
+    border-bottom: 2px solid #e65100;
+}
