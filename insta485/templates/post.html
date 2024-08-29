@@ -1,0 +1,167 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- <img class="post_img" src="/uploads/{{ img_url }}" alt="img">
+<a href="/users/{{ owner }}/">
+    <img class="avatar" src="/uploads/{{ owner_img_url }}" alt="avatar">
+    <b>{{ owner }}</b>
+</a>
+<p>{{ timestamp }}</p>
+<p>{{ likes }}
+    {% if likes == 1 %}
+    like
+    {% else %}
+    likes
+    {% endif %}
+</p>
+{% for item in comments %}
+<a href="/users/{{ item.owner }}/">
+    <b>{{ item.owner }}</b>
+</a>
+<p>{{ item.text }}</p>
+{% if owner == logname %}
+<div>
+    <form action="<FIXME_COMMENTS_URL_HERE>?target=<FIXME_CURRENT_PAGE_URL_HERE>" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="operation" value="delete"/>
+        <input type="hidden" name="commentid" value="{{ item.commentid }}"/>
+        <input type="submit" name="uncomment" value="delete"/>
+    </form>
+</div>
+{% endif %}
+{% endfor %}
+{% if owner == logname %}
+<div>
+    <form action="<FIXME_POSTS_URL_HERE>?target=<FIXME_LOGGED_IN_USER_PAGE_URL_HERE>" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="operation" value="delete"/>
+        <input type="hidden" name="postid" value="{{ postid }}"/>
+        <input type="submit" name="delete" value="delete this post"/>
+    </form>
+</div>
+{% endif %} -->
+<div class="container my-1">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div class="post my-5">
+        <div class="card">
+          <!-- User -->
+          <div class="card-body">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="d-flex">
+                    <a href="/users/{{ post.owner }}/">
+                      <img src="/uploads/{{ post.owner_img_url }}" class="border rounded-circle mr-2" alt="img"
+                        style="height: 40px" />
+                    </a>
+                    <div class="mt-2">
+                      <a href="/users/{{ post.owner }}/" class="text-dark">
+                        <strong class="mt-5">{{ post.owner }}</strong>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <a href="/posts/{{ post.postid }}/">
+                    <p class="mt-2 float-right" style="color: grey">{{ post.timestamp }}</p>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Media -->
+          <div class="bg-image hover-overlay ripple rounded-0" data-ripple-color="light">
+            <img src="/uploads/{{ post.img_url }}" class="w-100" alt="img" />
+            <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
+          </div>
+          <!-- Media -->
+          <!-- Interactions -->
+          <div class="card-body">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-8">
+                  <i class="fas fa-heart fa-lg ml-0"></i>
+                  <i class="fas fa-comment fa-lg ml-2"></i>
+                  <i class="fas fa-paper-plane fa-lg ml-2"></i>
+                </div>
+              </div>
+              <!-- Liked by section -->
+              <div class="row">
+                <div class="col-md-8 mt-1">
+                  {{ post.likes }}
+                  {% if post.likes == 1 %}
+                  like
+                  {% else %}
+                  likes
+                  {% endif %}
+                </div>
+              </div>
+              <div>
+                {% if post.like_or_not %}
+                <form action="/likes/?target={{ url }}" method="post" enctype="multipart/form-data">
+                  <input type="hidden" name="operation" value="unlike" />
+                  <input type="hidden" name="postid" value="{{ post.postid }}" />
+                  <input type="submit" name="unlike" value="unlike" />
+                </form>
+                {% else %}
+                <form action="/likes/?target={{ url }}" method="post" enctype="multipart/form-data">
+                  <input type="hidden" name="operation" value="like" />
+                  <input type="hidden" name="postid" value="{{ post.postid }}" />
+                  <input type="submit" name="like" value="like" />
+                </form>
+                {% endif %}
+              </div>
+
+              <!-- Post descripion -->
+              <div class="row">
+                <div class="col-md-12 mt-1 mb-0">
+
+                  {% for comment in post.comments %}
+                  <p class="mb-0">
+                    <a href="/users/{{ comment.owner }}/">
+                      <strong class="text-dark">{{ comment.owner }}</strong>
+                    </a>
+                    {{ comment.text }}
+                  </p>
+                  <!-- comment delete button -->
+                  {% if comment.owner == logname %}
+                  <div>
+                    <form action="/comments/?target={{ url }}" method="post" enctype="multipart/form-data">
+                      <input type="hidden" name="operation" value="delete" />
+                      <input type="hidden" name="commentid" value="{{ comment.commentid }}" />
+                      <input type="submit" name="uncomment" value="delete" />
+                    </form>
+                  </div>
+                  {% endif %}
+                  {% endfor %}
+                </div>
+                <div>
+                  <!-- DO NOT CHANGE THIS (aside from where we say 'FIXME') -->
+                  <form action="/comments/?target={{ url }}" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="operation" value="create" />
+                    <input type="hidden" name="postid" value="{{ post.postid }}" />
+                    <input type="text" name="text" required />
+                    <input type="submit" name="comment" value="comment" />
+                  </form>
+                </div>
+
+                <!-- post delete button -->
+                {% if post.owner == logname %}
+                <div>
+                  <form action="/posts/" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="operation" value="delete" />
+                    <input type="hidden" name="postid" value="{{ post.postid }}" />
+                    <input type="submit" name="delete" value="delete this post" />
+                  </form>
+                </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>
+{% endblock content %}

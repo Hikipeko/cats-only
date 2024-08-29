@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block account %}
+{{ super() }}
+{% endblock account %}
+
+{% block content %}
+<form action="/accounts/?target=/accounts/edit/" method="post" enctype="multipart/form-data">
+  Photo <input type="file" name="file" accept="image/*" />
+  Name <input type="text" name="fullname" value="logname" required />
+  Email <input type="text" name="email" value="email" required />
+  <input type="submit" name="update" value="submit" />
+  <input type="hidden" name="operation" value="edit_account" />
+</form>
+
+<b><a href="/accounts/password/">Change password</a></b>
+<b><a href="/accounts/delete/">Delete account</a></b>
+{% endblock content %}

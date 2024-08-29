@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!--
+<div class="container my-1">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+
+      {% for item in posts %}
+      <div class="post my-5">
+        <div class="card">
+          <!- User ->
+          <div class="card-body">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="d-flex">
+                    <a href="/users/{{ item.owner }}/">
+                      <img src="/uploads/{{ item.owner_img_url }}" class="border rounded-circle mr-2" alt="img"
+                        style="height: 40px" />
+                    </a>
+                    <div class="mt-2">
+                      <a href="/users/{{ item.owner }}/" class="text-dark">
+                        <strong class="mt-5">{{ item.owner }}</strong>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <a href="/posts/{{ item.postid }}/">
+                    <p class="mt-2 float-right" style="color: grey">{{ item.timestamp }}</p>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!- Media ->
+          <div class="bg-image hover-overlay ripple rounded-0" data-ripple-color="light">
+            <img src="/uploads/{{ item.img_url }}" class="w-100" alt="img" />
+            <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
+          </div>
+          <!- Media ->
+          <!- Interactions ->
+          <div class="card-body">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-8">
+                  <b class="fas fa-heart fa-lg ml-0"></b>
+                  <b class="fas fa-comment fa-lg ml-2"></b>
+                  <b class=" fas fa-paper-plane fa-lg ml-2"></b>
+                </div>
+              </div>
+              <!- Liked by section ->
+              <div class=" row">
+                <div class="col-md-8 mt-1">
+                  {{ item.likes }}
+                  {% if item.likes == 1 %}
+                  like
+                  {% else %}
+                  likes
+                  {% endif %}
+                </div>
+              </div>
+
+              <!- Post descripion ->
+              <div class="row">
+                <div class="col-md-12 mt-1 mb-0">
+
+                  {% for comment in item.comments %}
+                  <p class="mb-0">
+                    <a href="/users/{{ comment.owner }}/">
+                      <strong class="text-dark">{{ comment.owner }}</strong>
+                    </a>
+                    {{ comment.text }}
+                  </p>
+                  {% endfor %}
+                </div>
+
+              </div>
+            </div>
+          </div>
+          {% if not item.like_or_not %}
+          <form action="/likes/?target=/" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="operation" value="like" />
+            <input type="hidden" name="postid" value="{{ item.postid }}" />
+            <input type="submit" name="like" value="like" class="btn btn-outline-danger" />
+          </form>
+          {% else %}
+          <form action="/likes/?target=/" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="operation" value="unlike" />
+            <input type="hidden" name="postid" value="{{ item.postid }}" />
+            <input type="submit" name="unlike" value="unlike" class="btn btn-outline-danger" />
+          </form>
+          {% endif %}
+          <form action="/comments/?target=/" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="operation" value="create" />
+            <input type="hidden" name="postid" value="{{ item.postid }}" />
+            <div class="input-group mb-3">
+              <input type="text" name="text" required class="form-control" />
+              <div class="input-group-append">
+                <input type="submit" name="comment" value="comment" class="btn btn-outline-secondary" />
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      {% endfor %}
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>
+-->
+
+<div id="reactEntry">
+  Loading ...
+</div>
+<!-- Load JavaScript -->
+<script type="text/javascript" src="{{ url_for('static', filename='js/bundle.js') }}"></script>
+
+{% endblock content %}

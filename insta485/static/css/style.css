@@ -1,0 +1,28 @@
+body {
+    background-color: #fafafa;
+}
+
+/* div.post {
+    border-style: solid;
+    border-color: rgb(201, 201, 201);
+    margin: auto;
+    padding: 20px 5px 20px 5px;
+    width: 540px;
+} */
+
+a:link {
+    color: black;
+    text-decoration: none;
+}
+
+img.post_img {
+    width: 530px;
+}
+
+img.avatar {
+    width: 40px;
+}
+
+h2.title {
+    font-family: 'Billabong', sans-serif;
+}
