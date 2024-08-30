@@ -291,3 +291,82 @@ h1 {
 .file-input:hover::before {
     background-color: #d84315; /* Darker blue on hover */
 }
+
+/* create.html */
+/* Center the form container */
+.signup-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 40px;
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    border-radius: 7px;
+    text-align: center;
+}
+
+/* Logo style */
+.signup-logo {
+    font-family: 'HelloCatto', cursive;
+    font-size: 2.5rem;
+    color: #262626;
+    margin-bottom: 20px;
+}
+
+/* Subtitle style */
+.signup-subtitle {
+    font-size: 18px;
+    color: #8e8e8e;
+    margin-bottom: 20px;
+}
+
+/* Input field styling */
+.signup-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #dbdbdb;
+    border-radius: 3px;
+    background-color: #fafafa;
+    font-size: 18px;
+}
+
+/* Button styling */
+.signup-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #fb8c00;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.signup-button:hover {
+    background-color: #d84315;
+}
+
+/* Link to login */
+.signup-login-link {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.signup-login-link a {
+    color: #fb8c00;
+    text-decoration: none;
+}
+
+.signup-login-link a:hover {
+    text-decoration: underline;
+}
+
+.signup-label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+    color: #8e8e8e;
+    text-align: left; /* Align the label text to the left */
+}

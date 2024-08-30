@@ -1,21 +1,25 @@
 {% extends "base.html" %}
 {% block account %}
-<b><a href="/accounts/login/">login</a></b>
 {% endblock account %}
 
 {% block content %}
-<form action="/accounts/?target=/" method="post" enctype="multipart/form-data">
-  Photo <input type="file" name="file" required />
-  Name <input type="text" name="fullname" required />
-  Username <input type="text" name="username" required />
-  Email <input type="text" name="email" required />
-  Password <input type="password" name="password" required />
-  <input type="submit" name="signup" value="sign up" />
-  <input type="hidden" name="operation" value="create" />
-</form>
-
-<p>
-  Have an account?
-  <a href="/accounts/login/">Log in</a>
-</p>
+<h2 class="slogan mb-4">Share your cute cats with the rest of the world!</h2>
+<div class="signup-container honey">
+  <form action="/accounts/?target=/" method="post" enctype="multipart/form-data" class="signup-form">
+    <h2 class="signup-logo">Cats Only</h2>
+    <p class="signup-subtitle">Sign up to share and explore cute cats!</p>
+    <label for="file" class="signup-label">Profile Image</label>
+    <input type="file" id="file" name="file" class="signup-input" required />
+    <input type="text" name="fullname" class="signup-input" placeholder="Name" required />
+    <input type="text" name="username" class="signup-input" placeholder="Username" required />
+    <input type="text" name="email" class="signup-input" placeholder="Email" required />
+    <input type="password" name="password" class="signup-input" placeholder="Password" required />
+    <input type="submit" name="signup" value="Sign up" class="signup-button" />
+    <input type="hidden" name="operation" value="create" />
+  </form>
+  <p class="signup-login-link">
+    Have an account?
+    <a href="/accounts/login/">Log in</a>
+  </p>
+</div>
 {% endblock content %}
