@@ -8,7 +8,7 @@
 <div class="edit-profile-container honey">
   <h2 class="edit-profile-title">Edit profile</h2>
   <form action="/accounts/?target=/accounts/edit/" method="post" enctype="multipart/form-data"
-    class="edit-profile-form">
+    class="change-password-form">
     <div class="profile-picture-section">
       <img src="/uploads/{{ user_img_url }}" alt="Profile Picture" class="profile-picture">
       <div class="profile-info">
@@ -19,13 +19,13 @@
     </div>
 
     <div class="form-group">
-      <label for="fullname">Name</label>
-      <input type="text" id="fullname" name="fullname" placeholder="Enter your new name" required class="form-control">
+      <label for="fullname">New Name</label>
+      <input type="text" id="fullname" name="fullname" required class="form-control">
     </div>
 
     <div class="form-group">
-      <label for="email">Email</label>
-      <input type="text" id="email" name="email" placeholder="Enter your new enail" required class="form-control">
+      <label for="email">New Email</label>
+      <input type="text" id="email" name="email" required class="form-control">
     </div>
 
     <div class="form-group">
