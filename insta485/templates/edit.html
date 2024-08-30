@@ -5,14 +5,38 @@
 {% endblock account %}
 
 {% block content %}
-<form action="/accounts/?target=/accounts/edit/" method="post" enctype="multipart/form-data">
-  Photo <input type="file" name="file" accept="image/*" />
-  Name <input type="text" name="fullname" value="logname" required />
-  Email <input type="text" name="email" value="email" required />
-  <input type="submit" name="update" value="submit" />
-  <input type="hidden" name="operation" value="edit_account" />
-</form>
+<div class="edit-profile-container honey">
+  <h2 class="edit-profile-title">Edit profile</h2>
+  <form action="/accounts/?target=/accounts/edit/" method="post" enctype="multipart/form-data"
+    class="edit-profile-form">
+    <div class="profile-picture-section">
+      <img src="/uploads/{{ user_img_url }}" alt="Profile Picture" class="profile-picture">
+      <div class="profile-info">
+        <h2 class="username">hikipeko2</h2>
+        <label for="file" class="honey18 change-photo-btn">Change photo</label>
+        <input type="file" id="file" name="file" accept="image/*" class="file-input" />
+      </div>
+    </div>
 
-<b><a href="/accounts/password/">Change password</a></b>
-<b><a href="/accounts/delete/">Delete account</a></b>
+    <div class="form-group">
+      <label for="fullname">Name</label>
+      <input type="text" id="fullname" name="fullname" placeholder="Enter your new name" required class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text" id="email" name="email" placeholder="Enter your new enail" required class="form-control">
+    </div>
+
+    <div class="form-group">
+      <input type="submit" name="update" value="Submit" class="signup-button">
+      <input type="hidden" name="operation" value="edit_account" />
+    </div>
+  </form>
+
+  <div class="account-actions">
+    <a href="/accounts/password/" class="change-password-link">Change password</a>
+    <a href="/accounts/delete/" class="delete-account-link">Delete account</a>
+  </div>
+</div>
 {% endblock content %}

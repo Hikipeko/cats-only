@@ -86,7 +86,13 @@ def show_edit():
     email = connection.execute(
         'SELECT email FROM users WHERE username = ?', (logname,)
     ).fetchone()['email']
-    context = {'logname': logname, 'email': email}
+    user_img_url = connection.execute(
+        'SELECT filename AS user_img_url '
+        'FROM users '
+        'WHERE users.username = ?',
+        (logname, )
+    ).fetchone()['user_img_url']
+    context = {'logname': logname, 'email': email, 'user_img_url': user_img_url}
     return render_template('edit.html', **context)
 
 
