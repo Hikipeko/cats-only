@@ -1,11 +1,22 @@
 {% extends "base.html" %}
+
 {% block account %}
 {{ super() }}
 {% endblock account %}
+
 {% block content %}
-<p>{{ logname }} </p>
-<form action="/accounts/?target=/accounts/create/" method="post" enctype="multipart/form-data">
-  <input type="submit" name="delete" value="confirm delete account" />
-  <input type="hidden" name="operation" value="delete" />
-</form>
+<div class="edit-profile-container honey">
+  <h2 class="edit-profile-title">Delete Account</h2>
+  <p class="username", style="text-align: center;">{{ logname }}</p>
+  <form action="/accounts/?target=/accounts/create/" method="post" enctype="multipart/form-data"
+    class="change-password-form">
+    <div class="form-group">
+      <input type="submit" name="delete" value="Confirm Delete Account" class="signup-button">
+      <input type="hidden" name="operation" value="delete">
+    </div>
+  </form>
+  <div class="account-actions">
+    <a href="/accounts/edit/" class="back-to-edit-link">Back to Edit Account</a>
+  </div>
+</div>
 {% endblock content %}
