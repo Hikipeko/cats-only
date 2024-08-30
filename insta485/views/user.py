@@ -26,6 +26,12 @@ def show_user(username):
         'WHERE users.username = ?',
         (username, )
     ).fetchone()['fullname']
+    user_img_url = connection.execute(
+        'SELECT filename AS user_img_url '
+        'FROM users '
+        'WHERE users.username = ?',
+        (username, )
+    ).fetchone()['user_img_url']
     partial_posts = connection.execute(
         'SELECT postid, posts.filename AS img_url FROM posts '
         'WHERE posts.owner = ?'
@@ -58,6 +64,7 @@ def show_user(username):
                "total_posts": total_posts,
                "followers": followers,
                "following": following,
-               "posts": partial_posts
+               "posts": partial_posts,
+               "user_img_url": user_img_url
                }
     return flask.render_template("user.html", **context)

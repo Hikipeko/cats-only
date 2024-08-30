@@ -1,0 +1,35 @@
+
+@font-face {
+    font-family: 'MeowsText';
+    src: url('/static/css/Meows-VGWjy.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'HelloCatto';
+    src: url('/static/css/HelloCatto-OVXe8.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'MeowsShape';
+    src: url('/static/css/Meows-shape.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Puppy';
+    src: url('/static/css/Puppy.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Honey';
+    src: url('/static/css/Honey.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}

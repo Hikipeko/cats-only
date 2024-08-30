@@ -11,17 +11,17 @@
     <!-- User Information -->
     <div class="col-md-8">
       <div class="d-flex align-items-center">
-        <h2 class="mr-3">{{ username }}</h2>
+        <h2 class="mr-3 username">{{ username }}</h2>
 
         {% if logname == username %}
-        <a href="/accounts/edit/" class="btn btn-outline-secondary btn-sm">Edit profile</a>
+        <a href="/accounts/edit/" class="honey-large-margin btn btn-outline-secondary btn-sm">Edit profile</a>
         {% else %}
         <form action="/following/?target=/users/{{ username }}/" method="post" enctype="multipart/form-data" class="d-inline-block ml-2">
           {% if logname_follows_username %}
-          <input type="submit" name="unfollow" value="Unfollow" class="btn btn-outline-secondary btn-sm">
+          <input type="submit" name="unfollow" value="Unfollow" class="honey-large-margin btn btn-outline-secondary btn-sm">
           <input type="hidden" name="operation" value="unfollow" />
           {% else %}
-          <input type="submit" name="follow" value="Follow" class="btn btn-primary btn-sm">
+          <input type="submit" name="follow" value="Follow" class="honey-large-margin btn btn-primary btn-sm" style="background-color: #fb8c00; border-color: #fb8c00; color: white;">
           <input type="hidden" name="operation" value="follow" />
           {% endif %}
           <input type="hidden" name="username" value="{{ username }}" />
@@ -31,17 +31,17 @@
 
       <!-- User Stats -->
       <div class="d-flex mt-3">
-        <p class="mr-5"><strong>{{ total_posts }}</strong> posts</p>
-        <p class="mr-5">
+        <p class="mr-5 honey-no-margin"><strong>{{ total_posts }}</strong> posts</p>
+        <p class="mr-5 honey">
           <a href="/users/{{ username }}/followers/" class="text-dark"><strong>{{ followers }}</strong> followers</a>
         </p>
-        <p>
+        <p class="mr-5 honey">
           <a href="/users/{{ username }}/following/" class="text-dark"><strong>{{ following }}</strong> following</a>
         </p>
       </div>
 
       <!-- Full Name -->
-      <p class="mt-3">{{ fullname }}</p>
+      <p class="mt-3 honey-no-margin">{{ fullname }}</p>
     </div>
   </div>
 
@@ -49,9 +49,9 @@
   {% if logname == username %}
   <div class="row mt-4">
     <div class="col text-center">
-      <form action="/posts/?target=/users/{{ username }}/" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" accept="image/*" required class="btn btn-outline-secondary">
-        <input type="submit" name="create_post" value="Upload new post" class="btn btn-primary">
+      <form action="/posts/?target=/users/{{ username }}/" method="post" enctype="multipart/form-data" class="upload-form">
+        <input type="file" name="file" accept="image/*" required class="file-input">
+        <input type="submit" name="create_post" value="Upload new post" class="upload-btn">
         <input type="hidden" name="operation" value="create" />
       </form>
     </div>
