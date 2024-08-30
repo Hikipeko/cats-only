@@ -92,6 +92,19 @@ input[type="submit"]:hover {
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'MeowsShape';
+    src: url('/static/css/Meows-shape.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.navbar-brand-cats {
+    font-family: 'MeowsShape', sans-serif;
+    font-weight: normal; 
+    font-size: 2.0rem;
+}
+
 .slogan {
     font-family: 'Meows', cursive;
     font-size: 58px;
@@ -112,6 +125,18 @@ input[type="submit"]:hover {
 .navbar {
     background-color: #ffa726;
     border-bottom: 2px solid #e65100;
+}
+
+.navbar-link {
+    font-family: 'HelloCatto', sans-serif;
+    color: #e65100;
+    font-size: 20px;
+    font-weight: normal; /* You can adjust this to bold if needed */
+    text-decoration: none; /* Remove underline for links */
+}
+
+.navbar-link:hover {
+    text-decoration: underline; /* Add underline on hover for better UX */
 }
 
 .card-body {

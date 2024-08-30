@@ -1,80 +1,72 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>{{ username }}</h2>
-{% if logname == username %}
-{% else %}
-{% if logname_follows_username %}
-<p>following</p>
-<form action="/following/?target=/users/{{ username }}/" method="post" enctype="multipart/form-data">
-  <input type="submit" name="unfollow" value="unfollow" />
-  <input type="hidden" name="username" value="{{ username }}" />
-  <input type="hidden" name="operation" value="unfollow" />
-</form>
-{% else %}
-<p>not following</p>
-<form action="/following/?target=/users/{{ username }}/" method="post" enctype="multipart/form-data">
-  <input type="submit" name="follow" value="follow" />
-  <input type="hidden" name="username" value="{{ username }}" />
-  <input type="hidden" name="operation" value="follow" />
-</form>
-{% endif %}
-{% endif %}
+<div class="container">
+  <div class="row align-items-center">
+    <!-- Profile Picture -->
+    <div class="col-md-4 text-center">
+      <img src="/uploads/{{ user_img_url }}" class="rounded-circle img-fluid" alt="{{ fullname }}" style="width: 150px; height: 150px; object-fit: cover;">
+    </div>
 
-<!-- Link to /accounts/edit/ -->
-{% if logname == username %}
-<div>
-  <a href="/accounts/edit/">
-    Edit profile
-  </a>
-</div>
-{% endif %}
+    <!-- User Information -->
+    <div class="col-md-8">
+      <div class="d-flex align-items-center">
+        <h2 class="mr-3">{{ username }}</h2>
 
-<!-- logout form -->
-{% if logname == username %}
-<div>
-  <form action="/accounts/logout/" method="post" enctype="multipart/form-data">
-    <input type="submit" name="logout" value="Logout" />
-  </form>
-</div>
-{% endif %}
+        {% if logname == username %}
+        <a href="/accounts/edit/" class="btn btn-outline-secondary btn-sm">Edit profile</a>
+        {% else %}
+        <form action="/following/?target=/users/{{ username }}/" method="post" enctype="multipart/form-data" class="d-inline-block ml-2">
+          {% if logname_follows_username %}
+          <input type="submit" name="unfollow" value="Unfollow" class="btn btn-outline-secondary btn-sm">
+          <input type="hidden" name="operation" value="unfollow" />
+          {% else %}
+          <input type="submit" name="follow" value="Follow" class="btn btn-primary btn-sm">
+          <input type="hidden" name="operation" value="follow" />
+          {% endif %}
+          <input type="hidden" name="username" value="{{ username }}" />
+        </form>
+        {% endif %}
+      </div>
 
-<p>
-  {{ total_posts }}
-  {% if total_posts == 1 %}
-  post
-  {% else %}
-  posts
+      <!-- User Stats -->
+      <div class="d-flex mt-3">
+        <p class="mr-5"><strong>{{ total_posts }}</strong> posts</p>
+        <p class="mr-5">
+          <a href="/users/{{ username }}/followers/" class="text-dark"><strong>{{ followers }}</strong> followers</a>
+        </p>
+        <p>
+          <a href="/users/{{ username }}/following/" class="text-dark"><strong>{{ following }}</strong> following</a>
+        </p>
+      </div>
+
+      <!-- Full Name -->
+      <p class="mt-3">{{ fullname }}</p>
+    </div>
+  </div>
+
+  <!-- Upload New Post Form -->
+  {% if logname == username %}
+  <div class="row mt-4">
+    <div class="col text-center">
+      <form action="/posts/?target=/users/{{ username }}/" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*" required class="btn btn-outline-secondary">
+        <input type="submit" name="create_post" value="Upload new post" class="btn btn-primary">
+        <input type="hidden" name="operation" value="create" />
+      </form>
+    </div>
+  </div>
   {% endif %}
-  <a href="/users/{{ username }}/followers/">
-    <b>
-      {{ followers }}
-      {% if followers == 1 %}
-      follower
-      {% else %}
-      followers
-      {% endif %}
-    </b>
-  </a>
-  <a href="/users/{{ username }}/following/">{{ following }} following</a>
-</p>
-<p>{{ fullname }}</p>
 
-<!-- upload new post form -->
-{% if logname == username %}
-<div>
-  <form action="/posts/?target=/users/{{ username }}/" method="post" enctype="multipart/form-data">
-    <input type="file" name="file" accept="image/*" required />
-    <input type="submit" name="create_post" value="upload new post" />
-    <input type="hidden" name="operation" value="create" />
-  </form>
+  <!-- Posts Grid -->
+  <div class="row mt-4">
+    {% for post in posts %}
+    <div class="col-4 mb-4">
+      <a href="/posts/{{ post.postid }}/">
+        <img src="/uploads/{{ post.img_url }}" alt="{{ post.img_url }}" class="img-fluid" style="object-fit: cover; width: 100%; height: 100%;">
+      </a>
+    </div>
+    {% endfor %}
+  </div>
 </div>
-{% endif %}
-
-{% for post in posts %}
-<a href="/posts/{{ post.postid }}/">
-  <img src="/uploads/{{ post.img_url }}" alt="{{ post.img_url }}">
-</a>
-{% endfor %}
-
 {% endblock content %}
