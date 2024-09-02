@@ -1,18 +1,22 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Discover People</h1>
-{% for item in not_following %}
-<div class="follow">
-  <a href="/users/{{ item.username }}/">
-    <img class="avatar" src="/uploads/{{ item.user_img_url }}" alt="avatar">
-    <b>{{ item.username }}</b>
-  </a>
-  <form action="/following/?target=/explore/" method="post" enctype="multipart/form-data">
-    <input type="submit" name="follow" value="follow" />
-    <input type="hidden" name="username" value="{{ item.username }}" />
-    <input type="hidden" name="operation" value="follow" />
-  </form>
+<div class="explore-container">
+    <h1 class="edit-profile-title">Discover People</h1>
+    <div class="user-list">
+        {% for item in not_following %}
+        <div class="user-card">
+            <a href="/users/{{ item.username }}/" class="user-info">
+                <img class="avatar" src="/uploads/{{ item.user_img_url }}" alt="avatar">
+                <b class="username">{{ item.username }}</b>
+            </a>
+            <form action="/following/?target=/explore/" method="post" enctype="multipart/form-data" class="follow-form">
+                <input type="submit" name="follow" value="Follow" class="upload-btn">
+                <input type="hidden" name="username" value="{{ item.username }}">
+                <input type="hidden" name="operation" value="follow">
+            </form>
+        </div>
+        {% endfor %}
+    </div>
 </div>
-{% endfor %}
 {% endblock content %}
