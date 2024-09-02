@@ -233,6 +233,21 @@ h1 {
     font-family: 'Honey', cursive !important;
 }
 
+.file-input {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #e65100;
+    color: #e65100;
+    background-color: #fff7e6; /* Match the page background */
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.file-input:hover {
+    background-color: #ffe0b2; /* Slightly darker background on hover */
+    color: #d84315; /* Slightly darker text on hover */
+}
+
 /* Style for the upload form */
 .upload-form {
     display: inline-flex;
@@ -445,7 +460,7 @@ h1 {
 }
 
 /* Hide the file input button */
-.file-input {
+.profile-file-input {
     display: none;
 }
 
